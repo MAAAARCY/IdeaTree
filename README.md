@@ -32,7 +32,7 @@ vscode画面左下に"master"というところがあります
 そうすると"CHANGES"というところに自分が編集したコードが入っていると思います。
 Add,Commit,Pushといきたいですが、まずはPullをします
 "Message"上部にある"More Actions"を選択し、"Pull from"を選択しましょう
-画面上部に"https://github.com/MAAAARCY/IdeaTree.git"と入力してエンターを押しましょう。これでOKです。自分のコードがチームリーダーのコードと同じになったはずです
+画面上部に https://github.com/MAAAARCY/IdeaTree.git と入力してエンターを押しましょう。これでOKです。自分のコードがチームリーダーのコードと同じになったはずです
 
 次に"CHANGES"の所にカーソルを当てると"CHANGES"の隣にプラスボタンが出てきます
 それをクリックすると"STAGED CHANGES"という所に自分の編集したファイルが移動します
@@ -51,5 +51,5 @@ Add,Commit,Pushといきたいですが、まずはPullをします
 そこで自分が変更した箇所について詳しく書きます
 書けたら "Create pull request"を選択しましょう
 pull requestを送ることができました！！！
-リーダーがMergeすればチームリーダーのリポジトリに自分が変更した箇所が追加されます１
+リーダーがMergeすればチームリーダーのリポジトリに自分が変更した箇所が追加されます!
 これでおしまいです！
