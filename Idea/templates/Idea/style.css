@@ -63,9 +63,10 @@ main{
 
 #network {
     width:  90%;
-    height: 40vw;
-    border: 0.5px solid rgb(85, 80, 80);
-    margin: 300px auto;  
+    height: 60vw;
+    border: 1px solid rgb(142, 136, 136);
+    margin: 150px auto;  
+    margin-bottom: 70px;
 }
 
 #page_top{
@@ -74,7 +75,7 @@ main{
     position: fixed;
     right: 0;
     bottom: 0;
-    background: rgb(70, 196, 70);
+    background: rgb(46, 211, 46);
     opacity: 0.6;
     border-radius: 50%;
     }
@@ -106,11 +107,11 @@ main{
 
 footer{
     color: rgb(85, 80, 80);
-    height: 40px;
+    height: 30px;
     /* background-color: rgb(70, 196, 70); */
     font-size: 15px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 40px;
     text-align: center;
 }
 
