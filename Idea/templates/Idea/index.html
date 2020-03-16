@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>IdeaTree</title>
         <meta name="description" context="アイデアを出すお手伝いをするWebアプリケーションです。">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
@@ -31,6 +31,7 @@
 
             <div id="network"></div>
 
+            <br><br><br><br>
             <script type="text/javascript">
                 var flag = [false,true];
           
@@ -47,6 +48,23 @@
                 };
                 var options = {
                   interaction:{hover:true},
+                  nodes:{
+                  shape: "box",
+                  margin: 20,
+                    color: {
+                      background: "rgb(70, 196, 70)", 
+                      border: "rgb(121,192,110)",
+                      hover: "rgb(121,192,110)",
+                      highlight: "rgb(0,153,68)"
+                    },
+                    font: {
+                      color: "rgb(65,73,70)",
+                      size: 20
+                    }
+                  },
+                  edges:{
+                  color:{color:"black"}
+                  }
                   //physics:false
                 };
                 var network = new vis.Network(container, data, options);
