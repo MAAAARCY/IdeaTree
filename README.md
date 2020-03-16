@@ -54,3 +54,7 @@ origin/masterからpullしてきてください
 pull requestを送ることができました！！！ 
 リーダーがMergeすればチームリーダーのリポジトリに自分が変更した箇所が追加されます! 
 これでおしまいです！ 
+
+
+##参考記事
+https://qiita.com/KokiEnomoto/items/cc155ef12227a6bf3376
