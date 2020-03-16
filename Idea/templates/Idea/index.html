@@ -1,184 +1,109 @@
 <!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>IdeaTree</title>
+        <meta name="description" context="アイデアを出すお手伝いをするWebアプリケーションです。">
 
-<html>
-  <head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="../../static/Idea/images/logo_tree.png">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    </head>
 
-    <style type="text/css">
-      #network {
-        width:  800px;
-        height: 400px;
-        border: 1px solid #000;
-      }
+    <body>
+        <header>
+        </header>
+        <main>
+            <div class="top">
+                <br><br>
+                <img src="../../static/Idea/images/logo_tree.png" alt="logo" class="image">
+            </div>
+            <div class="input">
+                
+                <input type="text" name="word" class="in" id="first">
+                <input type="submit" value="&#xf002" onclick="firstword()" class="search_container">
+               
+                <!--<a href="#link"><input type="submit" value="送信" onclick='firstword()'></a>-->
+            </div>
 
-    </style>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-  </head>
-  <body>
-    {% block body %}
-    <div id="network"></div>
-    
-         firstname <input type="text"  id="first">
-         <input type="submit" value="送信" onclick='firstword()'>
+            <div id="network"></div>
 
-    <h2 id="tap">tap</h2>
-    <form action="{% url 'Idea:detail' %}" method="get">
-    {% csrf_token %}
-    <input type="text" id="sendword" name="key">
-    <input type="submit" value="送信" onclick='firstword()'>
-    </form>
+            <script type="text/javascript">
+                var flag = [false,true];
+          
+                var nodes = new vis.DataSet([
+                  {id: 1, label: 'noname'},
+                ]);
+                var edges = new vis.DataSet([
+                ]);
+                
+                var container = document.getElementById('network');
+                var data = {
+                  nodes: nodes,
+                  edges: edges
+                };
+                var options = {
+                  interaction:{hover:true},
+                  //physics:false
+                };
+                var network = new vis.Network(container, data, options);
+                var now_node_id="";
+                var max_node_id=1;
+                var clicked = false;
+          
+                network.on("click", function(params) {
+                  if (params.nodes.length == 1) {
+                    var nodeId = params.nodes[0];
+                    //document.getElementById('tap').innerHTML=nodeId;
+                    now_node_id=nodeId;
+                  }
+          
+                  if(false===flag[now_node_id]){
+                    alert("flag");
+                    return;
+                  }
+          
+          
+                  if (clicked) {
+                    //alert("double click!!");
+                    var words = ["う。","ぴえん。","つらみ"];
+                    for(var i=0;i<words.length;i++){
+                      nodes.add({id:i+max_node_id+1,label:words[i]});
+                      edges.add({from: now_node_id, to: i+max_node_id+1});
+                      flag.push(true);
+                    }
+                    max_node_id+=words.length;
+                    clicked = false;
+                    flag[now_node_id]=false;
+                    return;
+                  }
+          
+                  // シングルクリックを受理、300ms間だけダブルクリック判定を残す
+                  clicked = true;
+                  setTimeout(function () {
+                    // ダブルクリックによりclickedフラグがリセットされていない
+                    //     -> シングルクリックだった
+                    if (clicked) {
+                      //alert("single click!");
+                    }
+                    clicked = false;
+                  }, 300);
+                });
+          
+                function firstword(){
+                  var str = document.getElementById('first').value;
+                  nodes.update({id:1, label: str});
+                }
+              </script>
 
-    <script type="text/javascript">
-      var flag = [false,true];
-      var str = "";
-      var nodes = new vis.DataSet([
-        {id: 1, label: str},
-      ]);
-      var edges = new vis.DataSet([
-      ]);
-      
-      var container = document.getElementById('network');
-      //dataをStorageにぶち込む
-      var data = {
-        nodes: nodes,
-        edges: edges
-      };
-      var options = {
-        interaction:{hover:true},
-      };
+          <div id="page_top"><a href="#"></a></div>
 
-      var network = new vis.Network(container, data, options);
-
-      var now_node_id=1;
-      var now_node_word = "";
-      var max_node_id=1;
-      var clicked = false;
-
-      //nodeに出すやつ
-      var words = [""];
-      //APIから返ってきたもの
-      var APIdatas = [];
-      var names = ['','noname'];
-      
-      
-      
-      window.onbeforeunload = function(){
-        localStorage.clear();
-      }
-
-      network.on("click", function(params) {
-        if (params.nodes.length == 1) {
-          var nodeId=params.nodes;
-          now_node_id = nodeId;
-          var node = nodes[nodeId];
-          now_node_word = names[nodeId];
-          console.log(nodeId);
-          console.log(now_node_word);
-          console.log("ポケモン");
-          document.getElementById('tap').innerHTML = 'Selection: ' +nodeId; //何を指してるかをとることができました(天才)
-          document.getElementById('sendword').value = now_node_word;
-        }
-
-
-
-        if (clicked) {
-          if(false===flag[now_node_id]){
-            alert("flag");
-          return;
-          }
-          for(var i=0;i<words.length;i++){ //for(var i=0;i<words.length;i++)
-            nodes.add({id:i+max_node_id+1,label:words[i]});
-            edges.add({from: now_node_id, to: i+max_node_id+1});
-            flag.push(true);
-          }
-          max_node_id+=words.length;
-          clicked = false;
-          flag[now_node_id]=false;
-          return;
-        }
-
-        // シングルクリックを受理、300ms間だけダブルクリック判定を残す
-        clicked = true;
-        setTimeout(function () {
-          // ダブルクリックによりclickedフラグがリセットされていない
-          //     -> シングルクリックだった
-          if (clicked) {
-            //alert("single click!");
-          }
-          clicked = false;
-        }, 300);
-      });
-
-      function firstword(){
-        str = document.getElementById('first').value;
-        localStorage.setItem('words',str);
-        names[1]=str;
-        nodes.update({id:1, label:str});
-      }
-
-      function init(){
-        var storageflag =localStorage.getItem('words');
-        console.log(storageflag);
-        if(storageflag){
-          console.log('wordあり');
-          var storagewords = JSON.parse(storageflag);
-          for(var i=0;i<storagewords.length;i++){
-            words.push(storagewords[i]);
-          }
-          console.log(words);
-        }
-      }
-
-      function getAPI(){
-        
-
-        var api_input = APIdatas[0];
-        APIdatas.splice(0,1);
-
-        console.log(api_input);
-        console.log(APIdatas[0]);
-
-        words[0] = api_input;
-
-        for(var i=0;i<APIdatas.length;i++){
-          words.push(APIdatas[i]);
-        }
-
-        document.getElementById('tap').innerHTML =words;
-
-        //wordsに全部入ったっぽい
-        localStorage.setItem('words',JSON.stringify(words));
-        console.log(JSON.stringify(words));
-      }
-
-      function create(){
-        nodes.update({id:1, label:words[0]});
-        for(var i=0;i<words.length;i++){
-          nodes.add({id:i+max_node_id+1,label:words[i]});
-          edges.add({from: now_node_id, to: i+max_node_id+1});
-          flag.push(true);
-          names.push(words[i]);
-        }
-      }
-
-      </script>
-    {% if key %}
-    <script type = "text/javascript">
-    </script>
-    {% for o in data %}
-        <tr class="{% cycle 'row1' 'row2' %}">
-        <script type = "text/javascript">
-        //APIdatasに返ってきたやつをいれる
-        APIdatas.push("{{o}}");
-        </script>
-        </tr>
-    {% endfor %}
-    <script type="text/javascript">
-      getAPI();
-      init();
-      create();
-    </script>
-    {% endif %}
-    {% endblock %}
-  </body>
+        </main>
+        <footer>
+            <p>©Shoma,Miku,Masatoshi 2020</p>
+        </footer>
+    </body>
 </html>
