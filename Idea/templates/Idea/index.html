@@ -11,26 +11,42 @@
         <link rel="icon" href="../../static/Idea/images/logo_tree.png">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+        
     </head>
 
     <body>
         <header>
+            <img src="../../static/Idea/images/logo_tree.png" alt="logo" class="image">
+            <div class="inputs">
+                <input type="text" name="word" class="input" id="first">
+                <input type="submit" value="&#xf002" onclick="firstword()" class="search">
+            </div>
+            <div class="buttons">
+                <button id="question"><img  class="button" src="../../static/Idea/images/hatena_icon.png" alt="hatena"></button>
+                <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="../../static/Idea/images/GitHub-Mark-64px.png" class="button"></a>
+                <a href="https://qiita.com/shoma3571"><img src="../../static/Idea/images/qiita_new.png" class="button"></a>
+            </div>
         </header>
+
         <main>
-            <div class="top">
-                <img src="../../static/Idea/images/logo_tree.png" alt="logo" class="image">         
-                <input type="text" name="word" class="in" id="first">
-                <input type="submit" value="&#xf002" onclick="firstword()" class="search_container">
-                <a href="#" class="qbotton"><i class="fas fa-question"></i></a>
-                <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="../../static/Idea/images/GitHub-Mark-64px.png" class="qicon"></a>
-                <a href="https://qiita.com/shoma3571"><img src="../../static/Idea/images/qiita.png" class="gicon"></a>
-              </div>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <h1>IdeaTree</h1>
+                    <h3>このアプリについて</h3>
+                    <p>このアプリはアイデアを出すのを助けてくれます。
+                        使い方は一番上のボックスに最初のワードを入れると
+                        そこから樹形図のようなものが広がっていきます。
+                        出てきたワードをタップして検索をすると
+                        どんどん広がっていくようになります
+                    </p>
+                  </div>
+                </div>
+            </div>
             <div id="network"></div>
 
         </main>
-        <footer>
-            <p>©Shoma,Miku,Masatoshi 2020</p>
-        </footer>
         <script type="text/javascript" src="vis.js"></script>
+        <script type="text/javascript" src="pop-up.js"></script>
     </body>
 </html>
