@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="../../static/Idea/images/logo_tree.png">
+        <link rel="icon" href="images/logo_tree.png">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
     </head>
@@ -18,25 +18,19 @@
         </header>
         <main>
             <div class="top">
-                <br><br>
-                <img src="../../static/Idea/images/logo_tree.png" alt="logo" class="image">
-            </div>
-            <div class="input">
-                
+                <img src="logo.png" alt="logo" class="image">         
                 <input type="text" name="word" class="in" id="first">
                 <input type="submit" value="&#xf002" onclick="firstword()" class="search_container">
-               
-                <!--<a href="#link"><input type="submit" value="送信" onclick='firstword()'></a>-->
-            </div>
-
+                <a href="#" class="qbotton"><i class="fas fa-question"></i></a>
+                <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="GitHub-Mark-64px.png" class="gicon"></a>
+                <a href="https://qiita.com/shoma3571"><img src="logo-effect.png" class="qicon"></a>
+              </div>
             <div id="network"></div>
-
-            <br><br><br><br>
             <script type="text/javascript">
                 var flag = [false,true];
           
                 var nodes = new vis.DataSet([
-                  {id: 1, label: 'noname'},
+                  {id: 1,label: "noname"},
                 ]);
                 var edges = new vis.DataSet([
                 ]);
@@ -84,6 +78,7 @@
                     return;
                   }
           
+          
                   if (clicked) {
                     //alert("double click!!");
                     var words = ["う。","ぴえん。","つらみ"];
@@ -115,8 +110,6 @@
                   nodes.update({id:1, label: str});
                 }
               </script>
-
-          <div id="page_top"><a href="#"></a></div>
 
         </main>
         <footer>
