@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+html{
+    font-family: 'M PLUS 1p', sans-serif;
+}
+
+main{
+    font-size: 25px;
+    color: rgb(30, 136, 30);
+}
+
+.top{
+    background-color: #edeff0;
+}
+
+.image{
+    margin-top:8px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    width: 44.6px;
+    height: 48.4px;
+}
+
+
+.input{
+    color: rgb(70, 196, 70);
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+.in{
+    border: rgb(70, 196, 70) 3px solid;
+    background-color: #f8fafa;
+    margin-top:12px;
+    margin-left: 18px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    position: absolute;
+    box-shadow: 0 0 4px gray;
+}
+
+.search_container{
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 0.8em;
+    color:  rgb(70, 196, 70);
+    width: 2.5em;
+    height: 2.5em;
+    top: 0px;
+    outline : none;
+    position: absolute;
+    margin-top:10px;
+    margin-left: 450px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.qbotton {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(70, 196, 70);
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    border: solid 2px rgb(70, 196, 70);
+    overflow: hidden;
+    transition: .4s;
+    position: absolute;
+    text-align: center;
+    margin-top:12px;
+    margin-right:5px;
+    margin-left:880px;
+  }
+.qbotton:hover {
+    background: #88e9a9;
+  }
+
+.gicon{
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin-right:70px;
+    margin-top: 12px;
+    clear: both;
+}
+
+.qicon{
+    float: right;
+    margin-right:120px;
+    margin-top: -36px;
+    width: 76px;
+    height: 40px;
+    clear: both;
+}
+
+#network {
+    width:  90%;
+    height: 60vw;
+    border: 1px solid rgb(142, 136, 136);
+    margin: 150px auto;  
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+footer{
+    color: rgb(85, 80, 80);
+    height: 30px;
+    /* background-color: rgb(70, 196, 70); */
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+
