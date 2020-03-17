@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="images/logo_tree.png">
+        <link rel="icon" href="../../static/Idea/images/logo_tree.png">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
     </head>
@@ -18,102 +18,19 @@
         </header>
         <main>
             <div class="top">
-                <img src="logo.png" alt="logo" class="image">         
+                <img src="../../static/Idea/images/logo_tree.png" alt="logo" class="image">         
                 <input type="text" name="word" class="in" id="first">
                 <input type="submit" value="&#xf002" onclick="firstword()" class="search_container">
                 <a href="#" class="qbotton"><i class="fas fa-question"></i></a>
-                <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="GitHub-Mark-64px.png" class="gicon"></a>
-                <a href="https://qiita.com/shoma3571"><img src="logo-effect.png" class="qicon"></a>
+                <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="../../static/Idea/images/GitHub-Mark-64px.png" class="qicon"></a>
+                <a href="https://qiita.com/shoma3571"><img src="../../static/Idea/images/qiita.png" class="gicon"></a>
               </div>
             <div id="network"></div>
-            <script type="text/javascript">
-                var flag = [false,true];
-          
-                var nodes = new vis.DataSet([
-                  {id: 1,label: "noname"},
-                ]);
-                var edges = new vis.DataSet([
-                ]);
-                
-                var container = document.getElementById('network');
-                var data = {
-                  nodes: nodes,
-                  edges: edges
-                };
-                var options = {
-                  interaction:{hover:true},
-                  nodes:{
-                  shape: "box",
-                  margin: 20,
-                    color: {
-                      background: "rgb(70, 196, 70)", 
-                      border: "rgb(121,192,110)",
-                      hover: "rgb(121,192,110)",
-                      highlight: "rgb(0,153,68)"
-                    },
-                    font: {
-                      color: "rgb(65,73,70)",
-                      size: 20
-                    }
-                  },
-                  edges:{
-                  color:{color:"black"}
-                  }
-                  //physics:false
-                };
-                var network = new vis.Network(container, data, options);
-                var now_node_id="";
-                var max_node_id=1;
-                var clicked = false;
-          
-                network.on("click", function(params) {
-                  if (params.nodes.length == 1) {
-                    var nodeId = params.nodes[0];
-                    //document.getElementById('tap').innerHTML=nodeId;
-                    now_node_id=nodeId;
-                  }
-          
-                  if(false===flag[now_node_id]){
-                    alert("flag");
-                    return;
-                  }
-          
-          
-                  if (clicked) {
-                    //alert("double click!!");
-                    var words = ["う。","ぴえん。","つらみ"];
-                    for(var i=0;i<words.length;i++){
-                      nodes.add({id:i+max_node_id+1,label:words[i]});
-                      edges.add({from: now_node_id, to: i+max_node_id+1});
-                      flag.push(true);
-                    }
-                    max_node_id+=words.length;
-                    clicked = false;
-                    flag[now_node_id]=false;
-                    return;
-                  }
-          
-                  // シングルクリックを受理、300ms間だけダブルクリック判定を残す
-                  clicked = true;
-                  setTimeout(function () {
-                    // ダブルクリックによりclickedフラグがリセットされていない
-                    //     -> シングルクリックだった
-                    if (clicked) {
-                      //alert("single click!");
-                    }
-                    clicked = false;
-                  }, 300);
-                });
-          
-                function firstword(){
-                  var str = document.getElementById('first').value;
-                  nodes.update({id:1, label: str});
-                }
-              </script>
 
         </main>
         <footer>
             <p>©Shoma,Miku,Masatoshi 2020</p>
         </footer>
+        <script type="text/javascript" src="vis.js"></script>
     </body>
 </html>
