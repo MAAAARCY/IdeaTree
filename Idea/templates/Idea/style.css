@@ -57,10 +57,14 @@ main{
     margin: 10px;
     width: 50px;
     height: 50px;
+    border-radius: 50%;
 }
+
+
 .button:hover {
     /*背景の色を変更する(この色適当に決めたので後で変更しましょう)*/
     background-color: rgb(175, 238, 180);
+    border: 2px white solid;
 }
 
 
