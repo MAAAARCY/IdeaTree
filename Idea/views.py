@@ -2,17 +2,20 @@ from django.http import Http404,HttpResponse
 from django.shortcuts import render 
 from . import keywords
 
+class keep:
+    ptr = []
+
 def index(request):
+    keep.ptr.clear()
     return render(request, 'Idea/index.html')
 
 def detail(request):
     try:
-        ptr = []
         a = request.GET.get('key')
-        ptr = keywords.word(a)
+        keep.ptr += keywords.word(a)
         data = {
             'key': request.GET.get('key'),
-            'data': ptr
+            'data': keep.ptr
         }
     except Exception:
         raise Http404('error')
