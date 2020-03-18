@@ -1,120 +1,115 @@
 @charset "UTF-8";
 
 html{
-    font-family: 'M PLUS 1p', sans-serif;
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
+
+header{
+    background-color: #dddddd;
+    height: 70px;
+    display: flex;
 }
 
 main{
     font-size: 25px;
     color: rgb(30, 136, 30);
+    height: 85%;
 }
 
-.top{
-    background-color: #edeff0;
-}
 
 .image{
-    margin-top:8px;
-    margin-left: 20px;
-    margin-bottom: 0px;
-    width: 44.6px;
-    height: 48.4px;
+    margin:5px 0px;
+    margin-left: 10px;
+    height: 60px;
 }
 
+.inputs{
+    display: flex;
+    margin-left: 10px;
+}
+
+.input[type="text"]:focus {
+    outline: 0;
+}
+
+.search{
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 1em;
+    color:  rgb(70, 196, 70);
+    height: 40px;
+    outline : none;
+    margin-left: -40px;
+    padding: 10px;
+}
+
+.buttons{
+    display: flex;
+    margin-left: auto;
+}
+
+.button{
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+.button:hover {
+    /*背景の色を変更する(この色適当に決めたので後で変更しましょう)*/
+    background-color: white;
+    border: 2px white solid;
+}
+
+
+
+.inputs{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+}
 
 .input{
-    color: rgb(70, 196, 70);
-    display: flex;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-
-.in{
     border: rgb(70, 196, 70) 3px solid;
     background-color: #f8fafa;
-    margin-top:12px;
-    margin-left: 18px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    position: absolute;
+    height: 40px;
+    width: 250px;
     box-shadow: 0 0 4px gray;
 }
 
-.search_container{
-    cursor: pointer;
-    font-family: FontAwesome;
-    font-size: 0.8em;
-    color:  rgb(70, 196, 70);
-    width: 2.5em;
-    height: 2.5em;
-    top: 0px;
-    outline : none;
-    position: absolute;
-    margin-top:10px;
-    margin-left: 450px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-}
-
-.qbotton {
-    display: inline-block;
-    text-decoration: none;
-    color: rgb(70, 196, 70);
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 50%;
-    border: solid 2px rgb(70, 196, 70);
-    overflow: hidden;
-    transition: .4s;
-    position: absolute;
-    text-align: center;
-    margin-top:12px;
-    margin-right:5px;
-    margin-left:880px;
-  }
-.qbotton:hover {
-    background: #88e9a9;
-  }
-
-.gicon{
-    width: 40px;
-    height: 40px;
-    float: right;
-    margin-right:70px;
-    margin-top: 12px;
-    clear: both;
-}
-
-.qicon{
-    float: right;
-    margin-right:120px;
-    margin-top: -36px;
-    width: 76px;
-    height: 40px;
-    clear: both;
-}
 
 #network {
     width:  90%;
-    height: 60vw;
+    height: 100%;
     border: 1px solid rgb(142, 136, 136);
     margin: 150px auto;  
     margin-top: 15px;
     margin-bottom: 0px;
 }
 
-footer{
-    color: rgb(85, 80, 80);
-    height: 30px;
-    /* background-color: rgb(70, 196, 70); */
-    font-size: 15px;
-    margin-top: 15px;
-    margin-bottom: 0px;
-    text-align: center;
+/*popup実装(とりあえずなのでこっからどんどん編集する)*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
 }
-
-
+    
+.modal-content{
+    font-size: 20px;
+    background-color: rgb(247, 232, 211);
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+    width: 60%;
+    margin: auto;
+    border: olivedrab 5px ;
+}
