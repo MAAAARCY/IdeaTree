@@ -10,7 +10,7 @@ body{
 }
 
 header{
-    background-color: #edeff0;
+    background-color: #dddddd;
     height: 70px;
     display: flex;
 }
@@ -57,10 +57,14 @@ main{
     margin: 10px;
     width: 50px;
     height: 50px;
+    border-radius: 50%;
 }
+
+
 .button:hover {
     /*背景の色を変更する(この色適当に決めたので後で変更しましょう)*/
-    background-color: rgb(175, 238, 180);
+    background-color: white;
+    border: 2px white solid;
 }
 
 
@@ -106,6 +110,6 @@ main{
     background-color: rgb(247, 232, 211);
     filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
     width: 60%;
-    margin: 10% auto;
+    margin: auto;
     border: olivedrab 5px ;
 }
