@@ -29,7 +29,7 @@
                 <input type="submit" value="更新">
             </form>
             <div class="buttons">
-                <a><img src="{% static 'Idea/images/hatena_icon.png' %}" class="button" id="question"></a>
+                <a><img src="../../static/Idea/images/hatena_icon.png" class="button" id="question"></a>
                 <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="{% static 'Idea/images/GitHub-Mark-64px.png' %}" class="button"></a>
                 <a href="https://qiita.com/shoma3571"><img src="{% static 'Idea/images/qiita_new.png' %}" class="button"></a>
             </div>
@@ -73,6 +73,11 @@
         </script>
         </tr>
         {% endfor %}
+        {% for i in point %}
+        <script type = "text/javascript">
+            pt.push("{{i}}");
+        </script>
+        {% endfor %}
         <script type = "text/javascript">
             //数字受け取るやつ
             //ここでキャスト
@@ -94,5 +99,6 @@
         </script>
         {% endif %}
         {% endblock %}
+        <script type="text/javascript" src="../static/Idea/pop-up.js"></script>
     </body>
 </html>

@@ -5,6 +5,7 @@ from . import same
 
 def index(request):
     same.keep.ptr.clear()
+    same.keep.point.clear()
     same.keep.flag = False
     same.keep.word_num = 1
     same.keep.size_num = 0
@@ -19,6 +20,7 @@ def detail(request):
     data = {
         'key': request.GET.get('key'),
         'data': same.keep.ptr,
+        'point': same.keep.point,
         'flag': same.keep.flag,
         'word_num': same.keep.word_num,
         'size_num': same.keep.size_num

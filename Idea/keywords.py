@@ -20,13 +20,14 @@ def word(word: str):
 
     if same.keep.flag == False:
         api_datas.append(data['word'])
-        for i in range(20):
+        for i in range(3):
             api_datas.append(body[i][0])
         same.keep.flag = True
         #same.keep.size_num = len(same.keep.ptr) + 1
         return api_datas
     else:
         same.keep.word_num = same.keep.ptr.index(data["word"])+1
+        same.keep.point.append(same.keep.ptr.index(data["word"])+1)
         for i in range(3): 
             api_datas.append(body[i][0])
         #same.keep.size_num = len(same.keep.ptr) + 1
