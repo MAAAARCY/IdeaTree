@@ -58,6 +58,7 @@ network.on("click", function(params) {
     console.log(words);
     document.getElementById('sendword').value = node;
     console.log(names[nodeId]);
+    console.log(nodeId);
     //console.log(document.getElementById('sendword').value);
   }
 });
@@ -65,6 +66,7 @@ network.on("click", function(params) {
 function getdata(){
   //var first = words[0];
   //max_node_id-=2;
+  names[1] = words[0];
   nodes.update({id:1,label:words[0]});
   console.log(words.length);
   for(var i=1;i<words.length;i++){

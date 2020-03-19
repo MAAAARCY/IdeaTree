@@ -25,7 +25,7 @@
             </div>
             <form action="{% url 'Idea:detail' %}" method="get" class="inputs">
                 {% csrf_token %}
-                <input type="hidden" id="sendword" name="key">
+                <input type="text" id="sendword" name="key">
                 <input type="submit" value="更新">
             </form>
             <div class="buttons">
