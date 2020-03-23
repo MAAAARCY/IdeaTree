@@ -12,7 +12,6 @@
         <link rel="icon" href="{% static 'Idea/images/logo_tree.png' %}">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-        
     </head>
 
     <body>
@@ -20,14 +19,12 @@
         <header>
             <img src="{% static 'Idea/images/logo_tree.png' %}" alt="logo" class="image">
             <div class="inputs">
-                <input type="text" name="word" class="input" id="first">
-                <input type="submit" value="&#xf002" class="search" onclick = "window.firstword();">
+                <form action="{% url 'Idea:detail' %}" method="get" class="inputs">
+                    {% csrf_token %}
+                    <input type="text" id="sendword" class="input" name="key">
+                    <input type="submit" value="&#xf00c" class="search">
+                </form>
             </div>
-            <form action="{% url 'Idea:detail' %}" method="get" class="inputs">
-                {% csrf_token %}
-                <input type="hidden" id="sendword" name="key">
-                <input type="submit" value="更新">
-            </form>
             <div class="buttons">
                 <a><img src="../../static/Idea/images/hatena_icon.png" class="button" id="question"></a>
                 <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="{% static 'Idea/images/GitHub-Mark-64px.png' %}" class="button"></a>
@@ -79,26 +76,10 @@
         </script>
         {% endfor %}
         <script type = "text/javascript">
-            //数字受け取るやつ
-            //ここでキャスト
-            //input_word_node_id = parseInt("{{word_num}}",10);
-            //max_node_id = parseInt("{{size_num}}",10);
-            /*console.log(words);
-            for(var i=0;i<21;i++){
-                console.log(words[i]);
-            }
-            */
-            console.log("{{word_num}}");
-            console.log("{{size_num}}");
-            console.log("{{flag}}");
             getdata();
-            console.log("{{word_num}}");
-            console.log("{{size_num}}");
-            console.log("{{flag}}");
-            //console.log(words);
         </script>
         {% endif %}
         {% endblock %}
-        <script type="text/javascript" src="../static/Idea/pop-up.js"></script>
+        <script type="text/javascript" src="{% static 'Idea/pop-up.js' %}"></script>
     </body>
 </html>
