@@ -58,6 +58,14 @@ html2canvas(document.getElementsByClassName("picture"),{
 image_modal.style.display = 'flex';
 
 });
+
+var dl_btn = document.getElementById("download_button");
+dl_btn.addEventListener("click",function(e){
+  console.log('a');
+  if(e.target == image_modal){
+    image_modal.style.display = 'none';
+  }
+});
 var now_node_id="";
 var max_node_id=1;
 var clicked = false;
