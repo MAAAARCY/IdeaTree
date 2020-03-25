@@ -22,7 +22,9 @@ window.addEventListener('click', function(e) {
     }
 });
 
+
+
 function done_dl(){
-    image_modal.style.display = 'none';
-  
+  image_modal.style.display = 'none';
+
 }

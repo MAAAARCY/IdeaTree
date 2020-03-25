@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+/*
+ * "font-awesome" is lisenced under the SIL Open Font License 1.1
+ * https://fortawesome.github.io/Font-Awesome
+ * http://scripts.sil.org/OFL
+ */
+
 html{
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
     height: 100%;
@@ -24,10 +30,7 @@ main{
     font-size: 25px;
     color: rgb(30, 136, 30);
     height: 85%;
-    
 }
-
-
 
 .image{
     margin:5px 0px;
@@ -36,10 +39,17 @@ main{
 }
 
 .inputs{
+    margin:auto 0px;
     display: flex;
-    margin-left: 10px;
 }
 
+.input{
+    border: rgb(70, 196, 70) 3px solid;
+    background-color: #f8fafa;
+    height: 40px;
+    width: 250px;
+    box-shadow: 0 0 4px gray;
+}
 .input[type="text"]:focus {
     outline: 0;
 }
@@ -55,6 +65,20 @@ main{
     padding: 10px;
 }
 
+#search_word{
+    margin:auto;
+}
+
+.search_1{
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 1.5em;
+    color: gray /*rgb(70, 196, 70)*/;
+    outline : none;
+    margin:auto;
+    padding: 10px;
+}
+
 .buttons{
     display: flex;
     margin-left: auto;
@@ -66,30 +90,21 @@ main{
     height: 50px;
     border-radius: 50%;
 }
-
-
 .button:hover {
     /*背景の色を変更する(この色適当に決めたので後で変更しましょう)*/
     background-color: white;
     border: 2px white solid;
 }
 
-
-
-.inputs{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display: flex;
+.button2{
+    margin: 10px;
+    width: 50px;
+    height: 50px;
 }
-
-.input{
-    border: rgb(70, 196, 70) 3px solid;
-    background-color: #f8fafa;
-    height: 40px;
-    width: 250px;
-    box-shadow: 0 0 4px gray;
+.button2:hover {
+    background-color: white;
+    border: 1px white solid;
 }
-
 
 #network {
     width:  90%;
@@ -98,9 +113,8 @@ main{
     margin: 150px auto;  
     margin-top: 15px;
     margin-bottom: 0px;
-    background-color: wheat;
+    background-color:whitesmoke;
 }
-
 
 /*popup実装(とりあえずなのでこっからどんどん編集する)*/
 .modal {
@@ -113,8 +127,6 @@ main{
     width: 100%;
     background-color: rgba(0,0,0,0.5);
 }
-
-
     
 .modal-content{
     font-size: 20px;
@@ -125,9 +137,7 @@ main{
     border: olivedrab 5px ;
 }
 
-#download-btn {
-    margin:10px;
-  }
+
 
 .image-modal-content{
     text-align: center;
@@ -148,4 +158,11 @@ main{
     padding: 20px;
     background-color: olivedrab;
     color: white;
+    margin:20px;
+    text-decoration:none;
+}
+
+.check{
+    margin:auto;
+    text-align:center;
 }
