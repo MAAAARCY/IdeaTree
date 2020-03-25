@@ -33,6 +33,13 @@ var options = {
 };
 
 var network = new vis.Network(container, data, options);
+var btn = document.getElementById("ss");
+var image_modal = document.getElementById("image-modal");
+var check = document.getElementById('check');
+var sendword = document.getElementById('sendword');
+var first = document.getElementById('first');
+var second = document.getElementById('second');
+var search_word = document.getElementById('search_word');
 var input_word_node_id=1;
 var now_node_id=1;
 var words=[];
@@ -41,22 +48,43 @@ var names=[];
 var str = null;
 var num = 0;
 
-document.getElementById('check').style.display="none";
+//check.style.display = "none";
+image_modal.style.display = "none";
 
-function firstword(){
-  str = document.getElementById('first').value
-  nodes.update({id:1, label:str});
-  names[1] = str;
-  console.log(str);
-}
+btn.addEventListener("click", function(){
+
+  //ボタンを押下した際にダウンロードする画像を作る
+  html2canvas(document.getElementsByClassName("picture"),{
+    onrendered: function(canvas){
+      //aタグのhrefにキャプチャ画像のURLを設定
+      var imgData = canvas.toDataURL();
+      document.getElementById("download_button").href = imgData;
+    }
+  });
+
+//HTML内に画像を表示
+  html2canvas(document.getElementsByClassName("picture"),{
+    onrendered: function(canvas){
+      //imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
+      var imgData = canvas.toDataURL();
+      document.getElementById("result").src = imgData;
+    }
+  });
+
+image_modal.style.display = 'flex';
+
+});
+
+
 
 network.on("click", function(params) {
   if (params.nodes.length == 1) {
     now_node_id = params.nodes;
     var node = names[now_node_id];
     console.log(words);
-    document.getElementById('sendword').value = node;
-    document.getElementById('check').innerHTML = "ok";
+    sendword.value = node;
+    search_word.innerHTML = "選択しているword :"+node;
+    second.style.color = "rgb(70,196,70)";
     console.log(params.nodes);
   }
   if(false===flag[now_node_id]){
@@ -66,11 +94,13 @@ network.on("click", function(params) {
 });
 
 function getdata(){
-  document.getElementById('check').style.display="block";
-  document.getElementById('sendword').type = 'hidden';
-  document.getElementById('first').type = 'hidden';
-  document.getElementById('second').type = 'submit';
+  //check.style.display="flex";
+  sendword.type = 'hidden';
+  first.type = 'hidden';
+  second.type = 'submit';
+  second.style.color = 'gray';
   check_flag = true;
+  document.getElementById("search_word").innerHTML = "未選択です";
   names[1] = words[0];
   nodes.update({id:1,label:words[0]});
   console.log(words.length);
