@@ -32,6 +32,32 @@ var options = {
 };
 
 var network = new vis.Network(container, data, options);
+var btn = document.getElementById("ss");
+var image_modal = document.getElementById("image-modal");
+
+btn.addEventListener("click", function(){
+
+  //ボタンを押下した際にダウンロードする画像を作る
+  html2canvas(document.getElementsByClassName("picture"),{
+    onrendered: function(canvas){
+      //aタグのhrefにキャプチャ画像のURLを設定
+      var imgData = canvas.toDataURL();
+      document.getElementById("download_button").href = imgData;
+    }
+  });
+
+//HTML内に画像を表示
+html2canvas(document.getElementsByClassName("picture"),{
+  onrendered: function(canvas){
+    //imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
+    var imgData = canvas.toDataURL();
+    document.getElementById("result").src = imgData;
+  }
+});
+
+image_modal.style.display = 'flex';
+
+});
 var now_node_id="";
 var max_node_id=1;
 var clicked = false;

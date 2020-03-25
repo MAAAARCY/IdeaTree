@@ -11,7 +11,8 @@
         <link rel="icon" href="../../static/Idea/images/logo_tree.png">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-        
+       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
     </head>
 
     <body>
@@ -25,6 +26,7 @@
                 <a><img src="../../static/Idea/images/hatena_icon.png" class="button" id="question"></a>
                 <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="../../static/Idea/images/GitHub-Mark-64px.png" class="button"></a>
                 <a href="https://qiita.com/shoma3571"><img src="../../static/Idea/images/qiita_new.png" class="button"></a>
+                <a href="#!" id="ss" >スクリーンショットをダウンロード</a>
             </div>
         </header>
 
@@ -54,10 +56,62 @@
                   </div>
                 </div>
             </div>
-            <div id="network"></div>
+            <div id="image-modal" class="modal">
+              <div class="image-modal-content">
+                <div class="image-modal-body">
+                  <center>
+                      <br>
+                      <h1>この画像保存しますか？</h1>
+                      <br>
+                      <img src="" alt="gazou" id="result">
+                      <br>
+                      <a href="#!" id="download_button" type="button" download="tree.png">保存する</a>
+                  </center>
+                </div>
+              </div>
+          </div>
+            <div id="target">
+                <div id="network" class="picture"><div id="background"></div></div>
+            </div>
 
+            <!--<img src="" alt="gazou" id="result">-->
         </main>
+
         <script type="text/javascript" src="vis.js"></script>
-        <script type="text/javascript" src="pop-up.js"></script>
+        <script type="text/javascript" src="pop-up.js"></script>   
+
+        
+        <!--<script>
+            //ロードされた際の処理として実施：
+            window.onload = function(){
+
+
+                //ボタンを押下した際にダウンロードする画像を作る
+              
+              //HTML内に画像を表示
+              html2canvas(document.getElementsByClassName("picture"),{
+                onrendered: function(canvas){
+                  //imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
+                  var imgData = canvas.toDataURL();
+                  document.getElementById("result").src = imgData;
+                }
+              });
+
+              html2canvas(document.getElementsByClassName("picture"),{
+                onrendered: function(canvas){
+                  //aタグのhrefにキャプチャ画像のURLを設定
+                  var imgData = canvas.toDataURL();
+                  document.getElementById("ss").href = imgData;
+                }
+              });
+        
+              
+        
+            }
+          </script>-->
+
+    </div>
     </body>
+
+
 </html>
