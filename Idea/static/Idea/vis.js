@@ -41,6 +41,8 @@ var names=[];
 var str = null;
 var num = 0;
 
+document.getElementById('check').style.display="none";
+
 function firstword(){
   str = document.getElementById('first').value
   nodes.update({id:1, label:str});
@@ -54,6 +56,7 @@ network.on("click", function(params) {
     var node = names[now_node_id];
     console.log(words);
     document.getElementById('sendword').value = node;
+    document.getElementById('check').innerHTML = "ok";
     console.log(params.nodes);
   }
   if(false===flag[now_node_id]){
@@ -63,12 +66,15 @@ network.on("click", function(params) {
 });
 
 function getdata(){
+  document.getElementById('check').style.display="block";
   document.getElementById('sendword').type = 'hidden';
+  document.getElementById('first').type = 'hidden';
+  document.getElementById('second').type = 'submit';
+  check_flag = true;
   names[1] = words[0];
   nodes.update({id:1,label:words[0]});
   console.log(words.length);
   console.log(pt);
-  var j=0;
   var k=0;
 
   for(var i=2;i<=4;i++){
@@ -101,3 +107,4 @@ function getdata(){
   console.log(flag);
   console.log(now_node_id);
 }
+

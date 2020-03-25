@@ -21,7 +21,7 @@ def detail(request):
         }
         return render(request, 'Idea/index.html', data)
     except Exception:
-        raise Http404('ワードを入力してください。')
+        return render(request, 'Idea/error.html')
 
     
 

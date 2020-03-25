@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>IdeaTree</title>
+    <meta name="description" context="アイデアを出すお手伝いをするWebアプリケーションです。">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Idea/style.css' %}">
+    <link rel="stylesheet" href="{% static 'Idea/error.css' %}">
+    <link rel="icon" href="{% static 'Idea/images/logo_tree.png' %}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <!---->
+    <header>
+        <img src="{% static 'Idea/images/logo_tree.png' %}" alt="logo" class="image">
+    <!--<ul>-->
+        <h1>404 NOT FOUND</h1>
+    <!--</ul>-->
+    </header>
+    {% block body %}
+    <ul>
+        <h2>エラーが発生しました。</h2>
+        <a href="{% url 'Idea:index' %}">最初のページに戻る</a>
+    </ul>
+    {% endblock %}
+</body>
+</html>

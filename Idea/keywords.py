@@ -23,6 +23,7 @@ def word(word: str):
     }
     api_datas = []
     rm = []
+    judge = []
     payload = ("MARCY", "Marcy1003")
     url = api.format(word = data["word"])
     r = requests.get(url,auth=payload)
@@ -38,6 +39,16 @@ def word(word: str):
     else:
         same.keep.point.append(same.keep.ptr.index(data["word"])+1)
         rm = rand_ints_nodup(0,19,3)
-        for i in rm: 
-            api_datas.append(body[i][0])
+        for i in rm:
+            if(body[i][0] not in same.keep.ptr):
+                judge.append(body[i][0])
+                api_datas.append(body[i][0])
+        if len(judge) < 3:
+            for i in range(20):
+                if body[i][0] not in api_datas and body[i][0] not in same.keep.ptr:
+                    judge.append(body[i][0])
+                    api_datas.append(body[i][0])
+                    if(len(judge) >= 3):
+                        break
+
         return api_datas

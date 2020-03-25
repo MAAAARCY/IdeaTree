@@ -22,12 +22,16 @@
                 <form action="{% url 'Idea:detail' %}" method="get" class="inputs">
                     {% csrf_token %}
                     <input type="text" id="sendword" class="input" name="key">
-                    <input type="submit" value="&#xf00c" class="search">
+                    <input type="submit" value="&#xf00c" id="first" class="search">
+                    <input type="hidden" value="&#xf00c" id="second" class="search_1" onclick="check">
                 </form>
             </div>
+            <div id="check" class="check">
+                <p>ワードを選択してください</p>
+            </div>
             <div class="buttons">
-                <a><img src="../../static/Idea/images/hatena_icon.png" class="button" id="question"></a>
-                <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="{% static 'Idea/images/GitHub-Mark-64px.png' %}" class="button"></a>
+                <a><img src="{% static 'Idea/images/hatena_icon.png' %}" class="button" id="question"></a>
+                <a href="{% url 'Idea:index' %}"><img src="{% static 'Idea/images/update.png' %}" class="button"></a>
                 <a href="https://qiita.com/shoma3571"><img src="{% static 'Idea/images/qiita_new.png' %}" class="button"></a>
             </div>
         </header>
@@ -44,11 +48,13 @@
                         <p>アイデアを出すのを助けてくれます</p>
                         <p>　　</p>
                         <h3>使い方</h3>
-                        <p>一番上のボックスにワードを入れて検索</p>
+                        <p>一番上のボックスにワードを入れて</p>
+                        <p><i class="fas fa-check"></i>をクリック</p>
                         <p><i class="fa fa-angle-down"></i></p>
                         <p>樹形図が広がっていく</p>
                         <p><i class="fa fa-angle-down"></i></p>
-                        <p>出てきたワードをタップして再検索</p>
+                        <p>出てきたワードをタップして</p>
+                        <p><i class="fas fa-check"></i>をクリック</p>
                         <p><i class="fa fa-angle-down"></i></p>
                         <h4>どんどん広がっていく</h4>
                         <br><br>
