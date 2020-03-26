@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-
+        {% load static %}
         <meta charset="utf-8">
         <title>IdeaTree</title>
         <meta name="description" context="アイデアを出すお手伝いをするWebアプリケーションです。">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="../../static/Idea/images/logo_tree.png">
+        <link rel="stylesheet" href="{% static 'Idea/style.css' %}">
+        <link rel="icon" href="{% static 'Idea/images/logo_tree.png' %}">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-       
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
     </head>
 
     <body>
+        {% block body %}
         <header>
-            <img src="../../static/Idea/images/logo_tree.png" alt="logo" class="image">
+            <a href="{% url 'Idea:index' %}"><img src="{% static 'Idea/images/logo_tree.png' %}" alt="logo" class="image"></a>
             <div class="inputs">
-                <input type="text" name="word" class="input" id="first">
-                <input type="submit" value="&#xf002" onclick="firstword()" class="search">
+                <form action="{% url 'Idea:detail' %}" method="get" class="inputs">
+                    {% csrf_token %}
+                    <input type="text" id="sendword" class="input" name="key">
+                    <input type="submit" value="&#xf00c" id="first" class="search">
+                    <p id="search_word"></p>
+                    <input type="hidden" value="&#xf00c" id="second" class="search_1" onclick="check">
+                </form>
             </div>
             <div class="buttons">
-                <a><img src="../../static/Idea/images/hatena_icon.png" class="button" id="question"></a>
-                <a href="https://github.com/MAAAARCY/IdeaTree.git"><img src="../../static/Idea/images/GitHub-Mark-64px.png" class="button"></a>
-                <a href="https://qiita.com/shoma3571"><img src="../../static/Idea/images/qiita_new.png" class="button"></a>
-                <a href="#!" id="ss" >スクリーンショットをダウンロード</a>
+                <a><img src="{% static 'Idea/images/hatena_icon.png' %}" class="button" id="question"></a>
+                <a><img src="{% static 'Idea/images/camera-retro-solid.svg' %}" class="button2" id="ss"></a>
             </div>
         </header>
-
+        
         <main>
             <div id="modal" class="modal">
                 <div class="modal-content">
@@ -39,18 +41,22 @@
                     <center>
                         <br>
                         <h1>IdeaTree</h1>
-                        <p>　　</p>
+                        <br>
                         <h3>このアプリについて</h3>
                         <p>アイデアを出すのを助けてくれます</p>
-                        <p>　　</p>
+                        <p>(使用可能言語:日本語)</p>
+                        <br>
                         <h3>使い方</h3>
-                        <p>一番上のボックスにワードを入れて検索</p>
+                        <p>一番上のボックスにワードを入れて</p>
+                        <p><i class="fas fa-check"></i>をクリック</p>
                         <p><i class="fa fa-angle-down"></i></p>
                         <p>樹形図が広がっていく</p>
                         <p><i class="fa fa-angle-down"></i></p>
-                        <p>出てきたワードをタップして再検索</p>
+                        <p>出てきたワードをタップして<i class="fas fa-check"></i>をクリック</p>
                         <p><i class="fa fa-angle-down"></i></p>
                         <h4>どんどん広がっていく</h4>
+                        <p><i class="fas fa-camera-retro"></i>でツリーを保存</p>
+                        <p>アイコンクリックでリセット
                         <br><br>
                         <p>©︎2020 Shoma, Miku, Masatoshi</p>
                         <br>
@@ -63,7 +69,7 @@
                 <div class="image-modal-body">
                   <center>
                       <br>
-                      <h1>この画像保存しますか？</h1>
+                      <h1>この画像を保存しますか？</h1>
                       <br>
                       <img src="" alt="gazou" id="result">
                       <br>
@@ -71,17 +77,31 @@
                   </center>
                 </div>
               </div>
-          </div>
+            </div>
             <div id="target">
                 <div id="network" class="picture"><div id="background"></div></div>
             </div>
 
-            <!--<img src="" alt="gazou" id="result">-->
         </main>
-
-        <script type="text/javascript" src="vis.js"></script>
-        <script type="text/javascript" src="pop-up.js"></script>   
-
-    </div>
+        <script type="text/javascript" src="{% static 'Idea/vis.js' %}"></script>
+        {% if key %}
+        {% for o in data %}
+        <tr class="{% cycle 'row1' 'row2' %}">
+        <script type = "text/javascript">
+            words.push("{{o}}");
+        </script>
+        </tr>
+        {% endfor %}
+        {% for i in point %}
+        <script type = "text/javascript">
+            pt.push("{{i}}");
+        </script>
+        {% endfor %}
+        <script type = "text/javascript">
+            getdata();
+        </script>
+        {% endif %}
+        {% endblock %}
+        <script type="text/javascript" src="{% static 'Idea/pop-up.js' %}"></script>
     </body>
 </html>

@@ -37,7 +37,14 @@ def word(word: str):
         same.keep.flag = True
         return api_datas
     else:
-        same.keep.point.append(same.keep.ptr.index(data["word"])+1)
+        if data["word"] in same.keep.ptr:
+            same.keep.point.append(same.keep.ptr.index(data["word"])+1)
+        else:
+            same.keep.ptr.clear()
+            same.keep.point.clear()
+            same.keep.KeyCount.clear()
+            api_datas.append(data['word'])
+            
         rm = rand_ints_nodup(0,19,3)
         for i in rm:
             if(body[i][0] not in same.keep.ptr):
